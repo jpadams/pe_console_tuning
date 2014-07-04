@@ -30,13 +30,19 @@ class pe_console_tuning (
     match => "PuppetEnterpriseConsole.set\('factNames',",
     line  => "    PuppetEnterpriseConsole.set('factNames', ${facts});",
   }
-  
-  if $show_certnames_live_mgmt == true {
-    file_line { 'show certnames by default in  Live Management':
-      path  => '/opt/puppet/share/live-management/views/index.erb',
-      match => '<div class="node-list" style="display:',
-      line  => '      <div class="node-list" style="display: block">',
+
+  case $show_certnames_live_mgmt {
+    true:  { $mode = 'block' }
+    false: { $mode = 'none' }
+    default: {
+      fail("\$show_certnames_live_mgmt must be boolean but was ${show_certnames_live_mgmt}")
     }
+  }
+
+  file_line { 'show certnames by default in Live Management':
+    path  => '/opt/puppet/share/live-management/views/index.erb',
+    match => '<div class="node-list" style="display:',
+    line  => "      <div class=\"node-list\" style=\"display: ${mode}\">",
   }
 
 }
