@@ -15,11 +15,8 @@ class pe_console_tuning (
   $show_certnames_live_mgmt = false
 )
 ```
-*console_timeout* is a value in seconds. After a successful login you have this many seconds before y
-ou have to login again.
+*console_timeout* is a value in seconds. After a successful login you have this many seconds before you have to login again.
 
-*facts_array* is the set of facts in the Live Management Advanced filter. If you want to put custom v
-alues in here, have at it.
+*facts_array* is the set of 'Common fact names' in the Live Management Advanced Search filter. If you want to put custom values in here, have at it.
 
-*show_certnames_live_mgmt* causes certnames to be shown by default after performing some Live Managem
-ent query or action instead of of having to unfold each '▶ on 1 node'
+*show_certnames_live_mgmt* causes certnames to be shown by default after performing some Live Management query or action instead of of having to unfold each '▶ on 1 node'
