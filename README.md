@@ -13,7 +13,7 @@ class pe_console_tuning (
                   "operatingsystemrelease", "physicalprocessorcount", "processorcount",
                   "productname", "puppetversion"],
   $show_certnames_live_mgmt = false
-) {#...}
+)
 ```
 ####console_timeout:
 a value in seconds. After a successful login you have this many seconds before you have to login again.
