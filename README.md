@@ -3,6 +3,7 @@ pe_console_tuning
 
 This module allows you to tweak a few things in the console, especially Live Management.
 The parameter defaults are the same as PE's defaults, so trigger no changes.
+The "API" I'm using is spots I've found in the source code where these values are set and are otherwise not managed by Puppet Enterprise. These could change at any time and break this module, so it should not be used in production.
 
 Here's the module's parameter interface:
 ```puppet
