@@ -37,7 +37,7 @@ class pe_console_tuning (
 
   file_line { 'browsable resources in Live Management':
     path   => '/opt/puppet/share/live-management/live_management.rb',
-    match  => 'collect do |type|',
+    match  => 'collect do',
     line   => "    ${resources}.collect do |type|",
     notify => Service['pe-mcollective'],
   }
