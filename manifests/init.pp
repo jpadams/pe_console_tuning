@@ -33,7 +33,7 @@ class pe_console_tuning (
     line  => "    PuppetEnterpriseConsole.set('factNames', ${facts});",
   }
 
-  $resources = inline_template('<%= @resources_array.to_s %>')
+  $resources = inline_template('<%= @resources_array.to_s.gsub(" ", "") %>')
 
   file_line { 'browsable resources in Live Management':
     path   => '/opt/puppet/share/live-management/live_management.rb',
