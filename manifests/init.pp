@@ -1,6 +1,7 @@
 class pe_console_tuning (
   $console_timeout = 1200,
   $facts_array = ["architecture", "domain", "fqdn", "hardwaremodel", "hostname", "ipaddress", "is_virtual", "manufacturer", "memorytotal", "operatingsystem", "operatingsystemrelease", "physicalprocessorcount", "processorcount", "productname", "puppetversion"],
+  $resources_array = ['user','package','host','group','service'],
   $show_certnames_live_mgmt = false
 ) {
 
@@ -8,6 +9,7 @@ class pe_console_tuning (
     fail("\$console_timeout param must be an integer but was ${console_timeout}")
   }
   validate_array($facts_array)
+  validate_array($resources_array)
   validate_bool($show_certnames_live_mgmt)
 
   file_line { 'console timeout setting 1 of 2':
@@ -29,6 +31,15 @@ class pe_console_tuning (
     path  => '/opt/puppet/share/live-management/public/javascripts/app_controller.js',
     match => "PuppetEnterpriseConsole.set\('factNames',",
     line  => "    PuppetEnterpriseConsole.set('factNames', ${facts});",
+  }
+
+  $resources = inline_template('<%= @resources_array.to_s %>')
+
+  file_line { 'browsable resources in Live Management':
+    path   => '/opt/puppet/share/live-management/live_management.rb'
+    match  => "collect do |type|",
+    line   => "    ${resources}.collect do |type|",
+    notify => Service['pe-mcollective'],
   }
 
   case $show_certnames_live_mgmt {
