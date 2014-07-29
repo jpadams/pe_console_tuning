@@ -22,5 +22,8 @@ a value in seconds. After a successful login you have this many seconds before y
 ####facts_array:
 the set of 'Common fact names' in the Live Management Advanced Search filter. If you want to put custom values in here, have at it.
 
+####resources_array:
+the set of resource types availble in Live Management's Browse Resources. If you don't have this type on your systems, the module won't complain. Restarts pe-mcollective to effect the change.
+
 ####show_certnames_live_mgmt:
 if set to *true* causes certnames to be shown by default after performing some Live Management query or action instead of having to unfold each '▸ on 1 node'
