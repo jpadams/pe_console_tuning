@@ -13,6 +13,7 @@ class pe_console_tuning (
                   "is_virtual", "manufacturer", "memorytotal", "operatingsystem",
                   "operatingsystemrelease", "physicalprocessorcount", "processorcount",
                   "productname", "puppetversion"],
+  $resources_array = ['user','package','host','group','service'],
   $show_certnames_live_mgmt = false
 )
 ```
