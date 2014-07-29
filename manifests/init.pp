@@ -36,7 +36,7 @@ class pe_console_tuning (
   $resources = inline_template('<%= @resources_array.to_s %>')
 
   file_line { 'browsable resources in Live Management':
-    path   => '/opt/puppet/share/live-management/live_management.rb'
+    path   => '/opt/puppet/share/live-management/live_management.rb',
     match  => 'collect do |type|',
     line   => "    ${resources}.collect do |type|",
     notify => Service['pe-mcollective'],
